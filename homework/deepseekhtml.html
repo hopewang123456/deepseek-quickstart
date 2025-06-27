@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepSeek - 深度求索，探索AI无限可能</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --text-color: #1f2937;
+            --light-text: #6b7280;
+            --bg-color: #f9fafb;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        .features {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--light-text);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--bg-color);
+            border-radius: 10px;
+            padding: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .feature-card p {
+            color: var(--light-text);
+        }
+        
+        .demo {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .demo-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .demo-input {
+            width: 100%;
+            min-height: 150px;
+            padding: 15px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            resize: vertical;
+        }
+        
+        .demo-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .demo-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .demo-result {
+            margin-top: 30px;
+            text-align: left;
+            padding: 20px;
+            background-color: var(--bg-color);
+            border-radius: 8px;
+            min-height: 100px;
+        }
+        
+        .cta {
+            padding: 80px 0;
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .btn-white {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+        
+        .btn-white:hover {
+            background-color: #f3f4f6;
+        }
+        
+        footer {
+            background-color: var(--white);
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+:        
+        .footer-about p {
+            color: var(--light-text);
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: var(--light-text);
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .footer-links h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            text-decoration: none;
+            color: var(--light-text);
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+            color: var(--light-text);
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="nav-container">
+                <a href="#" class="logo">
+                    <img src="https://deepseek.com/logo.svg" alt="DeepSeek Logo">
+                    DeepSeek
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#features">产品特性</a></li>
+                    <li><a href="#demo">在线体验</a></li>
+                    <li><a href="#pricing">定价方案</a></li>
+                    <li><a href="#docs">开发文档</a></li>
+                    <li><a href="#about">关于我们</a></li>
+                </ul>
+                <a href="#" class="btn btn-primary">立即开始</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>探索AI的无限可能</h1>
+            <p>DeepSeek提供最先进的人工智能解决方案，帮助您解锁数据价值，提升业务效率，创造前所未有的用户体验。</p>
+            <a href="#demo" class="btn btn-primary">免费试用</a>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>为什么选择DeepSeek</h2>
+                <p>我们的AI技术经过精心设计，能够满足各种复杂场景的需求</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>超强性能</h3>
+                    <p>基于最先进的深度学习架构，处理速度比传统方案快10倍以上，同时保持极高的准确性。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>深度理解</h3>
+                    <p>我们的模型能够深入理解上下文，处理复杂语义关系，提供更精准的分析和回答。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>安全可靠</h3>
+                    <p>严格的数据加密和隐私保护措施，确保您的数据安全无忧，符合国际安全标准。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>持续进化</h3>
+                    <p>模型持续学习和优化，随着使用时间的增长，性能会不断提升，适应您的特定需求。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>多语言支持</h3>
+                    <p>支持全球主流语言，打破语言障碍，为您的国际化业务提供强大助力。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧩</div>
+                    <h3>易于集成</h3>
+                    <p>提供简洁的API接口和丰富的SDK，轻松与您现有的系统和应用集成，快速实现价值。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="demo" id="demo">
+        <div class="container">
+            <div class="section-title">
+                <h2>立即体验DeepSeek</h2>
+                <p>输入您的问题或指令，感受AI的强大能力</p>
+            </div>
+            <div class="demo-container">
+                <textarea class="demo-input" placeholder="请输入您的问题或指令..."></textarea>
+                <button class="demo-btn">获取答案</button>
+                <div class="demo-result">
+                    <p>AI生成的答案将显示在这里...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>准备好改变您的工作方式了吗？</h2>
+            <p>加入数千家已经使用DeepSeek提升效率的企业行列，开启您的AI之旅</p>
+            <a href="#" class="btn btn-white">立即注册</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <a href="#" class="footer-logo">DeepSeek</a>
+                    <p>致力于打造最先进的人工智能技术，帮助企业释放数据潜力，创造商业价值。</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>产品</h3>
+                    <ul>
+                        <li><a href="#">DeepSeek Chat</a></li>
+                        <li><a href="#">DeepSeek API</a></li>
+                        <li><a href="#">DeepSeek Enterprise</a></li>
+                        <li><a href="#">DeepSeek Research</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>资源</h3>
+                    <ul>
+                        <li><a href="#">文档中心</a></li>
+                        <li><a href="#">博客</a></li>
+                        <li><a href="#">案例研究</a></li>
+                        <li><a href="#">社区论坛</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>公司</h3>
+                    <ul>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">加入我们</a></li>
+                        <li><a href="#">联系我们</a></li>
+                        <li><a href="#">新闻中心</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 DeepSeek Technologies. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+    <script>
+        // Demo functionality
+        document.querySelector('.demo-btn').addEventListener('click', function() {
+            const input = document.querySelector('.demo-input').value;
+            const resultDiv = document.querySelector('.demo-result');
+            
+            if (!input.trim()) {
+                resultDiv.innerHTML = '<p>请先输入您的问题或指令...</p>';
+                return;
+            }
+            
+            resultDiv.innerHTML = '<p>正在处理您的请求，请稍候...</p>';
+            
+            // Simulate API call
+            setTimeout(() => {
+                const responses = [
+                    "根据我的分析，您的问题涉及多个方面。首先...其次...最后...",
+                    "这是一个很好的问题！让我为您详细解答...",
+                    "基于现有数据和模型分析，建议采取以下措施...",
+                    "您的问题可以分为三个关键点来回答...",
+                    "感谢您的提问。经过深入思考，我认为..."
+                ];
+                
+                const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                resultDiv.innerHTML = `<p>${randomResponse}</p>`;
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
